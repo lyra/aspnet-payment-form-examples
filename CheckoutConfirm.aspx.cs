@@ -1,10 +1,20 @@
-﻿using System;
+﻿ //
+ // Copyright (C) 2012 - 2018 Lyra Network.
+ // This file is part of Lyra ASP.NET payment form sample.
+ // See COPYING.md for license details.
+ //
+ // @author    Lyra Network <contact@lyra-network.com>
+ // @copyright 2012 - 2018 Lyra Network
+ // @license   http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
+ //
+
+using System;
 using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Web.Configuration;
-using Lyranetwork;
+using Lyranetwork.Lyra;
 using System.Text;
 
 public partial class CheckoutConfirm : System.Web.UI.Page
@@ -137,10 +147,10 @@ public partial class CheckoutConfirm : System.Web.UI.Page
         // Operating parameters.
 
         data.Add("vads_version", "V2"); // Payment form version. V2 is the only possible value.
-        data.Add("vads_contrib", "ASP.NET_Form_Sample_v" + LyraApi.VERSION);
+        data.Add("vads_contrib", "ASP.NET_Form_Sample_v" + PaymentUtils.VERSION);
         data.Add("vads_ctx_mode", config.AppSettings.Settings["ctx_mode"].Value); // Context mode. 
 
-        data.Add("vads_trans_date", LyraApi.GetTransDate()); // Generate UTC payment date in the format expected by the payment gateway : yyyyMMddHHmmss.
+        data.Add("vads_trans_date", PaymentUtils.GetTransDate()); // Generate UTC payment date in the format expected by the payment gateway : yyyyMMddHHmmss.
         data.Add("vads_page_action", "PAYMENT"); // This field define the action executed by the payment gateway. See gateway documentation for more information.
         data.Add("vads_action_mode", "INTERACTIVE"); // This allow to define the bank data acquisition mode : INTERACTIVE | SILENT.
                                                             
@@ -154,7 +164,7 @@ public partial class CheckoutConfirm : System.Web.UI.Page
         amount = Convert.ToInt32(amount * 100); // Conversion to cents then to integer to remove the decimal part.
         data.Add("vads_amount", Convert.ToString(amount)); // Set amount as string.
        
-        data.Add("vads_trans_id", LyraApi.GetTransId()); // Method generating transaction ID based on 1/10 of a second since midnight.
+        data.Add("vads_trans_id", PaymentUtils.GetTransId()); // Method generating transaction ID based on 1/10 of a second since midnight.
 
         //             
         // Optional parameters.
@@ -236,10 +246,10 @@ public partial class CheckoutConfirm : System.Web.UI.Page
         // data.Add("vads_order_info3", "");                
         
         // Compute signature.
-        data.Add("signature", LyraApi.GetSignature(data, certificate));
+        data.Add("signature", PaymentUtils.GetSignature(data, certificate));
 
         // Build payment form and redirect to payment gateway.
-        string payForm = LyraApi.GetPaymentForm(config.AppSettings.Settings["gateway_url"].Value, data);
+        string payForm = PaymentUtils.GetPaymentForm(config.AppSettings.Settings["gateway_url"].Value, data);
         CheckoutConfirmForm.Parent.Controls.Add(new LiteralControl(payForm));
     }
 

@@ -1,8 +1,18 @@
-﻿using System;
+﻿ //
+ // Copyright (C) 2012 - 2018 Lyra Network.
+ // This file is part of Lyra ASP.NET payment form sample.
+ // See COPYING.md for license details.
+ //
+ // @author    Lyra Network <contact@lyra-network.com>
+ // @copyright 2012 - 2018 Lyra Network
+ // @license   http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
+ //
+
+using System;
 using System.Configuration;
 using System.Web.Configuration;
 using System.Collections.Specialized;
-using Lyranetwork;
+using Lyranetwork.Lyra;
 using System.Web.UI.WebControls;
 
 public partial class PaymentResult : System.Web.UI.Page
@@ -39,7 +49,7 @@ public partial class PaymentResult : System.Web.UI.Page
 
                 // The signature is valid, we can continue processing.
 
-                PaymentStatus status = LyraApi.GetPaymentStatus(Request.Params.Get("vads_trans_status"));
+                PaymentStatus status = PaymentUtils.GetPaymentStatus(Request.Params.Get("vads_trans_status"));
                 if (PaymentStatus.ACCEPTED.Equals(status))
                 {
                     // Payment accepted. 
@@ -100,7 +110,7 @@ public partial class PaymentResult : System.Web.UI.Page
                     Label field = (Label)this.FindControl("ctl00$Content$ResultData" + i);
                     field.Text += "[" + key + "=" + Request.Params.Get(key) + "]<br />";
 
-                    if (i == 3)
+                    if (i == 2)
                     {
                         i = 1;
                     } else
@@ -112,7 +122,7 @@ public partial class PaymentResult : System.Web.UI.Page
                 Signature.Text = "[signature=" + Request.Params.Get("signature") + "]";
 
                 // In this example, we add this line to display the unhashed signature string in TEST mode.
-                UnhashedSignature.Text = LyraApi.GetSignature(Request.Params, certificate, false);
+                UnhashedSignature.Text = PaymentUtils.GetSignature(Request.Params, certificate, false);
             }
 
             // Check signature consistency.
@@ -123,7 +133,7 @@ public partial class PaymentResult : System.Web.UI.Page
                 // Ici nous vérifions le résultat du paiement pour déterminer le message à afficher à l'acheteur.
                 //
 
-                PaymentStatus status = LyraApi.GetPaymentStatus(Request.Params.Get("vads_trans_status"));
+                PaymentStatus status = PaymentUtils.GetPaymentStatus(Request.Params.Get("vads_trans_status"));
                 if (PaymentStatus.ACCEPTED.Equals(status))
                 {
                     // Payment accepted. Insert your code here.
@@ -173,7 +183,7 @@ public partial class PaymentResult : System.Web.UI.Page
     private bool CheckAuthenticity(NameValueCollection values, string certificate)
     {
         // Compute the signature.
-        string computedSign = LyraApi.GetSignature(values, certificate);
+        string computedSign = PaymentUtils.GetSignature(values, certificate);
 
         // Check signature consistency.
         return String.Equals(values.Get("signature"), computedSign, System.StringComparison.InvariantCultureIgnoreCase);

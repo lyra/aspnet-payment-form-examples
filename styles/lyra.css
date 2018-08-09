@@ -9,11 +9,11 @@
     padding: 30px;
     background-color: #FFFFFF;
     border: 1px solid #d2d7dc;
-    border-radius: 0px;
-    -moz-border-radius: 0px;
-    box-shadow: 0 0 6px rgba(0,0,0,.25);
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     -moz-box-shadow: 0 0 6px rgba(0,0,0,.25);
     -webkit-box-shadow: 0 0 6px rgba(0,0,0,.25);
+    box-shadow: 0 0 6px rgba(0,0,0,.25);
 }
 
 .top {
@@ -80,13 +80,13 @@ table {
     width: 100%;
 }
 
-td.label {
+.label {
     text-align: right;
     vertical-align: top;
     width: 40%;
 }
 
-td.validate {
+.validate {
     text-align: center;
 }
 
@@ -121,7 +121,7 @@ label {
 
 .res-column {
     float: left;
-    width: 33.33%;
+    width: 50%;
 }
 
 .res-row:after {

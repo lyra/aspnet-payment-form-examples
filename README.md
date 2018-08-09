@@ -9,7 +9,7 @@ The code presented here is an example of the implementation of the Lyra payment 
 * Checkout.aspx (and its .cs file): an HTML form to enter main order data.
 * CheckoutConfirm.aspx (and its .cs file): an order review page that will send data to the payment gateway.
 * PaymentResult.aspx (and its .cs file): the page to be called by IPN callback and where the buyer will return at the end of payment.
-* LyraApi.cs: a core file that contains the Lyra payment API logic (generate IDs, process signature, build redirect form).
+* PaymentUtils.cs: a core file that contains the Lyra payment API logic (generate IDs, process signature, build redirect form).
 * Web.config: application configuration file to set necessary parameters (at least, gateway credentials).
 * Some other resources for styling pages and managing translations.
 

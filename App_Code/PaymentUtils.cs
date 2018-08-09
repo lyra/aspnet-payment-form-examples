@@ -1,4 +1,14 @@
-﻿using System;
+﻿//
+// Copyright (C) 2012 - 2018 Lyra Network.
+// This file is part of Lyra ASP.NET payment form sample.
+// See COPYING.md for license details.
+//
+// @author    Lyra Network <contact@lyra-network.com>
+// @copyright 2012 - 2018 Lyra Network
+// @license   http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
+//
+
+using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Text;
@@ -6,14 +16,14 @@ using System.Security.Cryptography;
 using System.Collections.Specialized;
 using System.Web.UI;
 
-namespace Lyranetwork
+namespace Lyranetwork.Lyra
 {
-    public class LyraApi
+    public class PaymentUtils
     {
         public static readonly string VERSION = "1.1.0";
         public static readonly string SIGN_ALGO = "HMAC-SHA-256";
 
-        private LyraApi()
+        private PaymentUtils()
         {
             // Do not instanciate this class.
         }

@@ -157,7 +157,7 @@
     <value>By clicking on the button above, the codebehind will retrieve the values entered on the previous page. These values as well as the configuration variables will be stored in a SortedDictionary in order to be sorted alphabetically.</value>
   </data>
   <data name="ConfirmDescription2" xml:space="preserve">
-    <value>The signature processing is performed by calling the GetSignature() function in the LyraApi.cs API file.</value>
+    <value>The signature processing is performed by calling the GetSignature() function in the PaymentUtils.cs API file.</value>
   </data>
   <data name="ConfirmDescription3" xml:space="preserve">
     <value>Then the values will be sent to the payment gateway by calling GetPaymentForm() function.</value>

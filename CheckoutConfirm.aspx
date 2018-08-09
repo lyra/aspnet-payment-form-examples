@@ -1,6 +1,18 @@
 ﻿<%@ Page Title="<%$ Resources:WebResources, CheckoutConfirmTitle %>" Language="C#" MasterPageFile="~/Lyra.master" AutoEventWireup="true" CodeFile="CheckoutConfirm.aspx.cs" Inherits="CheckoutConfirm" %>
 <%@ PreviousPageType VirtualPath="~/Checkout.aspx" %>
 
+<%--
+ //
+ // Copyright (C) 2012 - 2018 Lyra Network.
+ // This file is part of Lyra ASP.NET payment form sample.
+ // See COPYING.md for license details.
+ //
+ // @author    Lyra Network <contact@lyra-network.com>
+ // @copyright 2012 - 2018 Lyra Network
+ // @license   http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
+ //
+--%>
+
 <asp:Content ContentPlaceHolderID="Head" runat="server"></asp:Content>
 
 <asp:Content ContentPlaceHolderID="Content" runat="server">

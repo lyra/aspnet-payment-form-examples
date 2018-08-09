@@ -157,7 +157,7 @@
     <value>En cliquant sur le bouton ci-dessus, le codebehind va récupérer les valeurs saisies sur la page précédente. Ces valeurs ainsi que les variables de configuration seront stockées dans un SortedDictionary afin d'etre classées par ordre alphabétique.</value>
   </data>
   <data name="ConfirmDescription2" xml:space="preserve">
-    <value>Le calcul de signature est réalisé par l'appel de la fonction GetSignature() présente dans le fichier API LyraApi.cs.</value>
+    <value>Le calcul de signature est réalisé par l'appel de la fonction GetSignature() présente dans le fichier API PaymentUtils.cs.</value>
   </data>
   <data name="ConfirmDescription3" xml:space="preserve">
     <value>Les valeurs seront ensuite postées à la plateforme de paiement en appelant la fonction GetPaymentForm().</value>
