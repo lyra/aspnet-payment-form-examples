@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Lyra.master.cs" Inherits="MasterPage" %>
+
+<%--
+ //
+ // Copyright © Lyra Network.
+ // This file is part of Lyra ASP.NET payment form example. See COPYING.md for license details.
+ //
+ // @author    Lyra Network <https://www.lyra.com>
+ // @copyright Lyra Network
+ // @license   http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
+ //
+--%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="/styles/lyra.css" rel="stylesheet" type="text/css" />
+
+    <asp:ContentPlaceHolder id="Head" runat="server"></asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <div>
+                <a class="lang-link" href="?lang=fr"><asp:Image runat="server" ImageUrl="/images/flags/fr.png" /> Français</a>
+                <a class="lang-link" href="?lang=en"><asp:Image runat="server" ImageUrl="/images/flags/en.png" /> English</a>
+            </div>
+            <div class="logo">
+                <a href="Checkout.aspx"><asp:Image runat="server" ImageUrl="/images/logo.png" /></a>
+                <br />
+                <asp:Localize runat="server" Text="<%$ Resources:WebResources, SiteHeader %>" />
+            </div>
+        </div>
+
+        <div class="main">
+            <asp:ContentPlaceHolder ID="Content" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </div>
+</body>
+</html>

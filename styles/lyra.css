@@ -1,0 +1,130 @@
+﻿body {
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container {
+    text-align: justify;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #d2d7dc;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: 0 0 6px rgba(0,0,0,.25);
+    -webkit-box-shadow: 0 0 6px rgba(0,0,0,.25);
+    box-shadow: 0 0 6px rgba(0,0,0,.25);
+}
+
+.top {
+    height: 120px;
+    font: 12px/1.55em Helvetica,Arial,sans-serif;
+}
+
+.main {
+    min-height: 600px;
+    font: 12px/1.55em Helvetica,Arial,sans-serif;
+    border: 1px solid #DDDDD5;
+    padding: 25px;
+}
+
+.logo {
+    float: left;
+    height: 120px;
+    font: 16px/2em Helvetica,Arial,sans-serif;
+    font-weight: bold;
+}
+
+.logo img {
+    border: 1px solid #DDDDD5;
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+a.lang-link {
+    text-decoration: none;
+    padding-right: 15px;
+    float: right;
+}
+
+a.lang-link img {
+    vertical-align: middle;
+}
+
+.message {
+    background: none repeat scroll 0 0 #FFFFE0;
+    border: 1px solid #E6DB55;
+    margin-bottom: 15px;
+    padding: 10px;
+    display: block;
+    text-align: center;
+}
+
+.column {
+    width: 45%;
+    float: left;
+    color: #727272;
+    font: 12px/1.55em Helvetica,Arial,sans-serif;
+    line-height: 26px;
+    border: 1px solid transparent;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+}
+
+table {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.label {
+    text-align: right;
+    vertical-align: top;
+    width: 40%;
+}
+
+.validate {
+    text-align: center;
+}
+
+h2 {
+    color: #91B219;
+}
+
+label {
+    font-weight: bolder;
+    color: #773306;
+}
+
+.card-logo {
+    max-height: 20px;
+    vertical-align: middle;
+}
+
+.result {
+    color: #773306;
+    font-size: 16px;
+    width: 100%;
+    display: block;
+    margin-bottom: 25px;
+}
+
+.logger {
+    width: 96.6%;
+    height: 150px;
+    resize: vertical;
+    padding: 15px;
+}
+
+.res-column {
+    float: left;
+    width: 50%;
+}
+
+.res-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
