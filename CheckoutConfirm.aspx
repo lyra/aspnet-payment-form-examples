@@ -3,12 +3,11 @@
 
 <%--
  //
- // Copyright (C) 2012 - 2018 Lyra Network.
- // This file is part of Lyra ASP.NET payment form sample.
- // See COPYING.md for license details.
+ // Copyright © Lyra Network.
+ // This file is part of Lyra ASP.NET payment form example. See COPYING.md for license details.
  //
- // @author    Lyra Network <contact@lyra-network.com>
- // @copyright 2012 - 2018 Lyra Network
+ // @author    Lyra Network <https://www.lyra.com>
+ // @copyright Lyra Network
  // @license   http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  //
 --%>
@@ -16,7 +15,7 @@
 <asp:Content ContentPlaceHolderID="Head" runat="server"></asp:Content>
 
 <asp:Content ContentPlaceHolderID="Content" runat="server">
-    <form id="CheckoutConfirmForm" runat="server">   
+    <form id="CheckoutConfirmForm" runat="server">
         <div class="column">
             <h2><asp:Localize runat="server" Text="<%$ Resources:WebResources, BuyerData %>" /></h2>
 
@@ -139,6 +138,6 @@
 
 
             <asp:Label ID="lblOutput" runat="server"></asp:Label>
-        </div>    
+        </div>
     </form>
 </asp:Content>

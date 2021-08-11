@@ -1,4 +1,4 @@
-# Lyra ASP.NET payment form sample
+# Lyra ASP.NET payment form example
 
 ## Introduction
 
@@ -7,7 +7,7 @@ The code presented here is an example of the implementation of the Lyra payment 
 ## Contents
 
 * Checkout.aspx (and its .cs file): an HTML form to enter main order data.
-* CheckoutConfirm.aspx (and its .cs file): an order review page that will send data to the payment gateway.
+* CheckoutConfirm.aspx (and its .cs file): an order preview page that will send data to the payment gateway.
 * PaymentResult.aspx (and its .cs file): the page to be called by IPN callback and where the buyer will return at the end of payment.
 * PaymentUtils.cs: a core file that contains the Lyra payment API logic (generate IDs, process signature, build redirect form).
 * Web.config: application configuration file to set necessary parameters (at least, gateway credentials).
@@ -15,7 +15,7 @@ The code presented here is an example of the implementation of the Lyra payment 
 
 ## First use
 
-* Place this sample files on a directory at the root of your store on the web server.
+* Copy the content of this project to a directory at the root of your store on the web server.
 * Set your Lyra API credentials in the Web.config file. You can also configure some other fields.
 * Set the IPN URL to `www.your-site.com/PaymentResult.aspx` into your Lyra Back Office > Settings > Notification rules.
 * Access `www.your-site.com/Checkout.aspx` from the browser.
@@ -34,4 +34,4 @@ The code presented here is an example of the implementation of the Lyra payment 
 
 ## License
 
-Each Lyra ASP.NET payment form sample source file included in this distribution is licensed under GNU GENERAL PUBLIC LICENSE (GPL 3.0). Please see LICENSE.txt for the full text of the GPL 3.0 license. It is also available through the world-wide-web at this URL: http://www.gnu.org/licenses/.
+Each source file included in this distribution is licensed under GNU GENERAL PUBLIC LICENSE (GPL 3.0). Please see LICENSE.txt for the full text of the GPL 3.0 license. It is also available through the world-wide-web at this URL: http://www.gnu.org/licenses/.

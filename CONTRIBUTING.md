@@ -1,6 +1,6 @@
-# Contributing to Lyra ASP.NET form sample
+# Contributing to Lyra ASP.NET form example
 
-Anyone is welcome to contribute to Lyra ASP.NET form sample. There are various ways you can contribute:
+Anyone is welcome to contribute to Lyra ASP.NET form example. There are various ways you can contribute:
 
 - Raise an issue on GitHub.
 - Send us a Pull Request with your bug fixes.

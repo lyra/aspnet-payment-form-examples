@@ -1,10 +1,9 @@
 ﻿//
-// Copyright (C) 2012 - 2018 Lyra Network.
-// This file is part of Lyra ASP.NET payment form sample.
-// See COPYING.md for license details.
+// Copyright © Lyra Network.
+// This file is part of Lyra ASP.NET payment form example. See COPYING.md for license details.
 //
-// @author    Lyra Network <contact@lyra-network.com>
-// @copyright 2012 - 2018 Lyra Network
+// @author    Lyra Network <https://www.lyra.com>
+// @copyright Lyra Network
 // @license   http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
 //
 
@@ -30,7 +29,7 @@ namespace Lyranetwork.Lyra
 
         /// <summary>
         /// Return current UTC date in format yyyyMMddHHmmss.
-        /// 
+        ///
         /// Renvoi la date courante en UTC au format yyyyMMddHHmmss.
         /// </summary>
         /// <returns>A formatted transaction Date.</returns>
@@ -41,7 +40,7 @@ namespace Lyranetwork.Lyra
 
         /// <summary>
         /// Generate a unique transaction number in the day.
-        /// 
+        ///
         /// Génère un numéro de transaction unique dans la journée.
         /// </summary>
         /// <returns>A generated transaction ID.</returns>
@@ -67,7 +66,7 @@ namespace Lyranetwork.Lyra
 
         /// <summary>
         /// Hash signature string using SHA1 algorithm.
-        /// 
+        ///
         /// Hashage du texte de la signature en utilisant l'algorithme SHA1.
         /// </summary>
         /// <param name="text">Text to hash.</param>
@@ -83,7 +82,7 @@ namespace Lyranetwork.Lyra
 
         /// <summary>
         /// Hash signature string using HMAC-SHA256 algorithm.
-        /// 
+        ///
         /// Hashage du texte de la signature en utilisant l'algorithme HMAC-SHA256.
         /// </summary>
         /// <param name="text">Text to hash.</param>
@@ -95,32 +94,32 @@ namespace Lyranetwork.Lyra
             byte[] textBuffer = encoding.GetBytes(text);
             byte[] keyBuffer = encoding.GetBytes(key);
 
-            HMACSHA256 serviceProvider = new HMACSHA256(keyBuffer);            
+            HMACSHA256 serviceProvider = new HMACSHA256(keyBuffer);
             return Convert.ToBase64String(serviceProvider.ComputeHash(textBuffer));
         }
 
         /// <summary>
-        /// Compute signature. 
-        ///  - The use of SortedDictionary&lt;key, value&gt; allow ordering data alphabetically.
+        /// Compute signature.
+        ///  - The use of SortedDictionary&lt;key, value&gt; allow sorting data alphabetically.
         ///  - To add field, use the method SortedDictionary.Add().
         ///  - Keys and values must be strings.
         ///  - The data sort order is case insensitive.
-        ///  
+        ///
         /// Calcul de la signature.
         ///  - L'utilisation d'un SortedDictionary&lt;clé, valeur&gt; permet d'organiser les données par ordre alphabétique.
         ///  - L'ajout d'un champ se fait avec la méthode SortedDictionary.Add().
         ///  - Les clés et les valeurs stockées doivent être de type string.
-        ///  - Le tri par ordre alhpabétique ne tient pas compte de la casse.
+        ///  - Le tri par ordre alphabétique ne tient pas compte de la casse.
         /// </summary>
         /// <param name="parameters">A list of (key, value) entries.</param>
-        /// <param name="certificate">The secret key.</param>
+        /// <param name="shakey">The secret key.</param>
         /// <returns>The computed signature</returns>
-        public static string GetSignature(NameValueCollection parameters, string certificate)
+        public static string GetSignature(NameValueCollection parameters, string shakey)
         {
-            return GetSignature(parameters, certificate, true);
+            return GetSignature(parameters, shakey, true);
         }
 
-        public static string GetSignature(NameValueCollection parameters, string certificate, bool hashed)
+        public static string GetSignature(NameValueCollection parameters, string shakey, bool hashed)
         {
             var data = new SortedDictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
             foreach (string key in parameters.AllKeys)
@@ -132,15 +131,15 @@ namespace Lyranetwork.Lyra
                 }
             }
 
-            return GetSignature(data, certificate, hashed);
+            return GetSignature(data, shakey, hashed);
         }
 
-        public static string GetSignature(SortedDictionary<string, string> parameters, string certificate)
+        public static string GetSignature(SortedDictionary<string, string> parameters, string shakey)
         {
-            return GetSignature(parameters, certificate, true);
+            return GetSignature(parameters, shakey, true);
         }
 
-        public static string GetSignature(SortedDictionary<string, string> parameters, string certificate, bool hashed)
+        public static string GetSignature(SortedDictionary<string, string> parameters, string shakey, bool hashed)
         {
             // The sign var contains unhashed string. Display it if you have signature problems.
             string sign = "";
@@ -154,9 +153,9 @@ namespace Lyranetwork.Lyra
                 return sign + "SECRETSHOPKEY";
             } else
             {
-                sign += certificate;
+                sign += shakey;
                 System.Diagnostics.Debug.WriteLine("|" + sign + "|");
-                return Hash(sign, certificate, Encoding.UTF8);
+                return Hash(sign, shakey, Encoding.UTF8);
             }
         }
 
@@ -194,7 +193,7 @@ namespace Lyranetwork.Lyra
         {
             // Set a name for the form.
             string formId = "LyraPaymentForm";
-            
+
             // Build the form using the specified data to be posted.
             StringBuilder formBuilder = new StringBuilder();
 

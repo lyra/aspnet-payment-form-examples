@@ -1,6 +1,6 @@
-﻿1.1.0, 2018-08-13:
+﻿1.1.0, 2021-08-11:
 - Bug fix: use valid first name and last name fields.
-- [technical]General code refactoring.
+- [technical] General code refactoring.
 - Added country field.
 - Added translation mecanism (with English and French translations).
 - Improved comments and messages.

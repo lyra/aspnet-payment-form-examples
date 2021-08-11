@@ -1,10 +1,9 @@
 ﻿ //
- // Copyright (C) 2012 - 2018 Lyra Network.
- // This file is part of Lyra ASP.NET payment form sample.
- // See COPYING.md for license details.
+ // Copyright © Lyra Network.
+ // This file is part of Lyra ASP.NET payment form example. See COPYING.md for license details.
  //
- // @author    Lyra Network <contact@lyra-network.com>
- // @copyright 2012 - 2018 Lyra Network
+ // @author    Lyra Network <https://www.lyra.com>
+ // @copyright Lyra Network
  // @license   http://www.gnu.org/licenses/gpl.html GNU General Public License (GPL v3)
  //
 
@@ -28,7 +27,7 @@ public partial class PaymentResult : System.Web.UI.Page
     {
         Configuration config = WebConfigurationManager.OpenWebConfiguration(Request.ApplicationPath);
 
-        string certificate = "PRODUCTION".Equals(config.AppSettings.Settings["ctx_mode"].Value) ? // Choose certificate.
+        string shakey = "PRODUCTION".Equals(config.AppSettings.Settings["ctx_mode"].Value) ? // Choose PRODUCTION or TEST SHA key.
             config.AppSettings.Settings["key_prod"].Value :
             config.AppSettings.Settings["key_test"].Value;
 
@@ -37,12 +36,12 @@ public partial class PaymentResult : System.Web.UI.Page
         {
             //
             // The order processing will be done here. The return to shop code part should be used only for displaying the payment result to the buyer.
-            // 
+            //
             // Le traitement de la commande se fera ici. La partie du code pour le retour à la boutique ne doit servir qu'à l'affichage du résultat pour l'acheteur.
             //
-            
+
             // Check signature consistency.
-            if (CheckAuthenticity(Request.Form, certificate))
+            if (CheckAuthenticity(Request.Form, shakey))
             {
                 // Use order ID to find the order to update.
                 string orderId = Request.Params.Get("vads_order_id");
@@ -52,7 +51,7 @@ public partial class PaymentResult : System.Web.UI.Page
                 PaymentStatus status = PaymentUtils.GetPaymentStatus(Request.Params.Get("vads_trans_status"));
                 if (PaymentStatus.ACCEPTED.Equals(status))
                 {
-                    // Payment accepted. 
+                    // Payment accepted.
                     // Insert your logic here to register order, manage stock, empty shopping cart, send e-mail confirmation and more.
                     Response.Write("OK-Accepted payment, order has been updated.");
                 }
@@ -64,7 +63,7 @@ public partial class PaymentResult : System.Web.UI.Page
                 }
                 else
                 {
-                    // Payment cancelled by the buyer or payment failed. 
+                    // Payment cancelled by the buyer or payment failed.
                     // Insert your logic here to cancel order if already created.
                     Response.Write("OK-Payment failure, order has been cancelled.");
                 }
@@ -122,11 +121,11 @@ public partial class PaymentResult : System.Web.UI.Page
                 Signature.Text = "[signature=" + Request.Params.Get("signature") + "]";
 
                 // In this example, we add this line to display the unhashed signature string in TEST mode.
-                UnhashedSignature.Text = PaymentUtils.GetSignature(Request.Params, certificate, false);
+                UnhashedSignature.Text = PaymentUtils.GetSignature(Request.Params, shakey, false);
             }
 
             // Check signature consistency.
-            if (CheckAuthenticity(Request.Params, certificate))
+            if (CheckAuthenticity(Request.Params, shakey))
             {
                 //
                 // Here we check payment result to know which message to show to the buyer.
@@ -173,17 +172,16 @@ public partial class PaymentResult : System.Web.UI.Page
 
     /// <summary>
     /// Check received signature validity.
-    /// 
+    ///
     /// Vérification de la signature reçue.
     /// </summary>
     /// <param name="values">Received data.</param>
-    /// <param name="certificate">The secret key.</param>
+    /// <param name="shakey">The secret key.</param>
     /// <returns>True if received signature is the same as computed one.</returns>
-
-    private bool CheckAuthenticity(NameValueCollection values, string certificate)
+    private bool CheckAuthenticity(NameValueCollection values, string shakey)
     {
         // Compute the signature.
-        string computedSign = PaymentUtils.GetSignature(values, certificate);
+        string computedSign = PaymentUtils.GetSignature(values, shakey);
 
         // Check signature consistency.
         return String.Equals(values.Get("signature"), computedSign, System.StringComparison.InvariantCultureIgnoreCase);
