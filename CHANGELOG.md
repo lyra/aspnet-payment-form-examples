@@ -1,4 +1,9 @@
-﻿1.1.0, 2021-08-11:
+﻿1.1.1, 2022-10-21:
+- Update some logos.
+- Update ReadMe file.
+- Do not set default gateway URL value.
+
+1.1.0, 2021-08-11:
 - Bug fix: use valid first name and last name fields.
 - [technical] General code refactoring.
 - Added country field.
